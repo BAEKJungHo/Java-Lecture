@@ -60,9 +60,10 @@ public class BankApplication {
 	private static Account findAccount(String ano) {
 		int checkNumber = 0;
 		for(int i=0; i<createCount; i++) {
-			if(accountArray[i].equals(ano)) 
+			if(ano.equals(accountArray[i].getAno())) 
 				checkNumber = i;
 		}
+		
 		return accountArray[checkNumber];
 	}
 
