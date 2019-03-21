@@ -5,12 +5,12 @@ public class Song {
 	String title;
 	String artist;
 	String album;
-	String composer;
+	String[] composer;
 	
 	int year;
 	int track;
 	
-	public Song(String title, String artist, String album, String composer, int year, int track) {
+	public Song(String title, String artist, String album, String[] composer, int year, int track) {
 		this.title = title;
 		this.artist = artist;
 		this.album = album;
