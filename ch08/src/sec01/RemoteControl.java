@@ -9,7 +9,7 @@ public interface RemoteControl {
 	public void turnOff();
 	public void setVolume(int volume);
 	
-	default void setVolume(boolean mute) {
+	default void setMute(boolean mute) {
 		if(mute) {
 			System.out.println("무음");
 		}
