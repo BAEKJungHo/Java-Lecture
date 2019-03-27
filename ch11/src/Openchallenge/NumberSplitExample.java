@@ -1,7 +1,5 @@
 package Openchallenge;
 
-import java.util.Arrays;
-
 public class NumberSplitExample {
 	public static void main(String[] args) {
 		int sum = 0;

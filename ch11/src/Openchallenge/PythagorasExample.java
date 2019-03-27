@@ -24,6 +24,5 @@ public class PythagorasExample {
 			}
 		}
 		System.out.println(pythagorasA + ", " + pythagorasB + ", " + pythagorasC);
-
 	}
 }

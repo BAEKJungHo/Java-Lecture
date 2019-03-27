@@ -42,8 +42,6 @@ public class PalindromeExample {
 				}
 			}
 		}
-		System.out.println("ê°€ì¥ í° ëŒ€ì¹­ìˆ˜ : " + palindrome);
-
+		System.out.println("°¡Àå Å« ´ëÄª¼ö : " + palindrome);
 	}
-
 }
