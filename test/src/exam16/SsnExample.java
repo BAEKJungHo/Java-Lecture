@@ -37,7 +37,7 @@ public class SsnExample {
 			run = inputError(date, sex);
 			isSex = genderCheck(sex);
 			
-			if((run == true) || (isSex == true) || (isSex == true)) {
+			if((run == true) || (isSex == true)) {
 				System.out.println("다시 입력하세요 !!");
 				
 				// StringBuilder 비우기
