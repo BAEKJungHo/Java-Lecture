@@ -1,21 +1,22 @@
-package Openchallenge;
+package newOpenChallenge;
 
 import java.util.Scanner;
-public class CeaserPasswordExercise {
+
+public class DashInsertExample2 {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		System.out.println("숫자를 입력하세요 : ");
+		System.out.print("숫자를 입력하세요 : ");
 		String str = scan.nextLine();
 		dashInsert(str);
+		scan.close();
 
 	}
 
 	public static void dashInsert(String str) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(str);
-	
-		int count = sb.length()-1;
-		for(int i=0; i<count; i++) {
+
+		for(int i=0; i<sb.length()-1; i++) {
 			switch((int)str.charAt(i)) {
 			case 56:
 			case 54:
@@ -28,7 +29,6 @@ public class CeaserPasswordExercise {
 				case 50:
 					sb.insert(i+1, "*");
 					str = sb.toString();
-					count++;
 					break;
 				default:
 					break;
@@ -47,7 +47,6 @@ public class CeaserPasswordExercise {
 				case 49:
 					sb.insert(i+1, "-");
 					str = sb.toString();
-					count++;
 					break;
 				default:
 					break;

@@ -1,12 +1,13 @@
-package Openchallenge;
+package newOpenChallenge;
 
 import java.util.Scanner;
 import java.util.StringTokenizer;
-public class AlphabetPassword {
+
+public class CeaserPasswordExample {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		
-		System.out.print("단어를 입력하세요 : ");
+		System.out.print("단어와 숫자를 입력하세요 : ");
 		String str = scan.nextLine();
 		
 		StringTokenizer st = new StringTokenizer(str, " ");

@@ -1,4 +1,4 @@
-package Openchallenge;
+package newOpenChallenge;
 
 public class PalindromeExample {
 	public static void main(String[] args) {

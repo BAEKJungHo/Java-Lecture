@@ -1,4 +1,4 @@
-package Openchallenge;
+package newOpenChallenge;
 
 import java.util.Scanner;
 public class PerfectNumberExample {
