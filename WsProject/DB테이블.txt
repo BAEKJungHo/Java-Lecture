@@ -1,0 +1,36 @@
+DataBase 생성
+DB명 : hotel
+
+
+===================================================================
+DB 테이블 생성
+
+1. member 테이블
+create table member (
+	id varchar(20) not null,
+	pwd varchar(10) not null,
+	name varchar(20) not null,
+	idno char(13) not null,
+	email varchar(30) not null,
+	phone varcahr(15) not null,
+	gender char(5) not null,
+	addr varchar(50) not null,
+	primary key(id));
+
+2. reserve 테이블
+create table reserve (
+	rsv_no varchar(5) not null,
+	room_no varchar(5) not null,
+	id varchar(20) not null,
+	date varchar(10) not null,
+	primary key(rsv_no));
+
+3. room 테이블
+create table room (
+	room_no varchar(5) not null,
+	grade varchar(5) not null,
+	psb_cnt varchar(5) not null,
+	state varchar(10) not null,
+	primary key(room_no));
+
+=====================================================================

@@ -1,0 +1,173 @@
+package DBProject;
+//검색하기 위한 소스
+
+import java.sql.*;
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.border.*;
+import java.awt.event.*;
+
+public class SelectDialog extends JDialog implements ActionListener, ItemListener {
+	//다이얼로그 창을 띄우는 부모 클래스 객체 선언
+	JdbcMainFrame frame1;
+	
+	private JPanel panel1 = new JPanel();
+	private JPanel jPanel1 = new JPanel();
+	private JPanel nameP = new JPanel();
+	private JButton ok = new JButton();
+	private JButton cancel = new JButton();
+	private ButtonGroup buttonGroup1 = new ButtonGroup();
+	private JRadioButton searchNameR = new JRadioButton();
+	private JRadioButton searchNumR = new JRadioButton();
+	private JRadioButton searchGenderR = new JRadioButton();
+	private JTextField nameTF = new JTextField();
+	private JPanel numP = new JPanel();
+	private JComboBox num = new JComboBox();
+	private JPanel genderP = new JPanel();
+	private ButtonGroup buttonGroup2 = new ButtonGroup();
+	private JRadioButton male = new JRadioButton();
+	private JRadioButton female = new JRadioButton();
+	private TitledBorder titledBorder1;
+	private JPanel cardP = new JPanel();
+	private CardLayout cardLayout1 = new CardLayout();
+	
+	public SelectDialog(Frame frame, String title, boolean modal) {
+		super(frame, title, modal);
+		this.frame1 = (JdbcMainFrame)frame; // 추가
+		try {
+			jbInit();
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		
+		// 이벤트 핸들러 등록
+		this.ok.addActionListener(this);
+	}
+	
+	public SelectDialog() {
+		this(null, "", false);
+	}
+	
+	private void jbInit() throws Exception {
+		titledBorder1 = new TitledBorder(BorderFactory.createEtchedBorder(Color.white, new Color(148, 145, 140)), "검색기준");
+		panel1.setLayout(null); // 배치관리자 제거
+		jPanel1.setBorder(titledBorder1);
+		jPanel1.setBounds(new Rectangle(6, 9, 203, 55));
+		jPanel1.setLayout(null);
+		nameP.setBorder(BorderFactory.createLineBorder(Color.black));
+		nameP.setBounds(new Rectangle(-5, 0, 203, 47));
+		nameP.setLayout(null);
+		ok.setBounds(new Rectangle(10, 141, 93, 38));
+		ok.setText("검색");
+		cancel.setBounds(new Rectangle(108, 141, 94, 38));
+		cancel.setText("취소");
+		searchNameR.setSelected(true);
+		searchNameR.setText("이름");
+		searchNameR.setBounds(new Rectangle(12, 22, 56, 26));
+		searchNumR.setText("번호");
+		searchNumR.setBounds(new Rectangle(76, 22, 56, 29));
+		searchGenderR.setText("성별");
+		searchGenderR.setBounds(new Rectangle(142, 22, 56, 27));
+		nameTF.setBounds(new Rectangle(28, 11, 152, 24));
+		numP.setLayout(null);
+		numP.setBounds(new Rectangle(52, 127, 203, 47));
+		numP.setBorder(BorderFactory.createLineBorder(Color.black));
+		num.setBounds(new Rectangle(28, 12, 151, 22));
+		
+		genderP.setLayout(null);
+		genderP.setBounds(new Rectangle(102, 181, 203, 47));
+		genderP.setBorder(BorderFactory.createLineBorder(Color.black));
+		male.setSelected(true);
+		male.setText("남자");
+		male.setBounds(new Rectangle(33, 11, 52, 26));
+		female.setText("여자");
+		female.setBounds(new Rectangle(109, 11, 57, 25));
+		cardP.setBorder(BorderFactory.createLineBorder(Color.black));
+		cardP.setBounds(new Rectangle(7, 75, 200, 50));
+		cardP.setLayout(cardLayout1);
+		
+		getContentPane().add(panel1);
+		jPanel1.add(searchNameR, null);
+		jPanel1.add(searchNumR, null);
+		jPanel1.add(searchGenderR, null);
+		genderP.add(male, null);
+		genderP.add(female, null);
+		panel1.add(cancel, null);
+		panel1.add(ok, null);
+		panel1.add(cardP, null);
+		panel1.add(jPanel1, null);
+		buttonGroup1.add(searchNameR);
+		buttonGroup1.add(searchNumR);
+		buttonGroup1.add(searchGenderR);
+		buttonGroup2.add(male);
+		buttonGroup2.add(female);
+		numP.add(num, null);
+		nameP.add(nameTF, null);
+		
+		// CardLayout 객체에 각각의 컴포넌트를 겹쳐서 배치
+		cardP.add(nameP, "name");
+		cardP.add(numP, "num");
+		cardP.add(genderP, "gender");
+		
+		pack(); // 반드시 pack() 메소드를 호출 한 후 다이얼로그를 중앙에 배치(setSize() 적용됨)
+		this.setSize(250, 250);
+		
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		Dimension dialogSize = this.getSize();
+		this.setLocation((screenSize.width - dialogSize.width) / 2, (screenSize.height - dialogSize.height) / 2);
+		
+		// 이벤트 핸들러 등록
+		this.searchNameR.addItemListener(this);
+		this.searchNumR.addItemListener(this);
+		this.searchGenderR.addItemListener(this);
+	}
+	
+	// 검색 조건을 클릭했을 경우 이벤트 처리 콜백 메소드 구현
+	public void itemStateChanged(ItemEvent ev) { // 라디오버튼이 클릭되는 경우 호출
+		Object ob = ev.getSource();
+		if(ob == this.searchNameR) // 이름
+			this.cardLayout1.show(this.cardP, "name"); // 겹쳐져 있는 패널중에 "name"이란 이름을 가지고 있는 패널을 보여줌
+		else if(ob == this.searchNumR) // 번호
+			this.cardLayout1.show(this.cardP, "id");
+		else if(ob == this.searchGenderR) // 성별
+			this.cardLayout1.show(this.cardP, "gender");
+	}
+	
+	// ActionListener 콜백 메소드 구현
+	public void actionPerformed(ActionEvent ev) {
+		Object ob = ev.getSource();
+		if(ob == this.cancel){
+			this.dispose();
+		}
+		else if(ob == this.ok) {
+			String temp = "";
+			if(this.searchNameR.isSelected() == true) {
+				temp = this.nameTF.getText().trim();
+				searchProcess("name", temp); // 필드명, 값을 기준으로 검색해주는 메소드 호출
+			}
+			else if(this.searchNumR.isSelected() == true) {
+				temp = (String)this.num.getSelectedItem();
+				searchProcess("id", temp);
+			}
+			else if(this.searchGenderR.isSelected() == true) {
+				temp = this.male.isSelected() ? "남자" : "여자";
+				searchProcess("gender", temp);
+			}
+		}
+	}
+	
+	// Select문 처리 메소드 구현
+	public void searchProcess(String fieldName, String value) {
+		String sql1 = "SELECT * FROM member";
+		if(fieldName.equals("name")) {
+			sql1 += " WHERE name like '%"+value+"%'";
+		}
+		else {
+			sql1 += " WHERE "+fieldName+"='"+value+"'";
+		}
+		
+		frame1.sqlQuery(sql1);
+		this.dispose();
+	}
+
+}
