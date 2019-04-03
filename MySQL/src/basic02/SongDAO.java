@@ -1,4 +1,4 @@
-package basic2;
+package basic02;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -78,9 +78,7 @@ public class SongDAO {
 		PreparedStatement pStmt = null;
 		try {
 			pStmt = conn.prepareStatement(query);
-			pStmt.setString(1, song.getTitle());
-			pStmt.setString(2, song.getLyrics());
-			pStmt.setInt(3, song.getId());
+			pStmt.setInt(1, song.getId());
 			
 			pStmt.executeUpdate();
 		} catch(Exception e) {
@@ -132,7 +130,6 @@ public class SongDAO {
     	try {
 			pStmt = conn.prepareStatement(query);
 			ResultSet rs = pStmt.executeQuery();
-			
 			while (rs.next()) {
 				SongDTO song = new SongDTO();
 				song.setId(rs.getInt("_id"));

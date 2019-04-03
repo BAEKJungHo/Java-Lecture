@@ -1,4 +1,4 @@
-package basic2;
+package basic02;
 
 // DTO : Data Transfer Object (데이터 전송, 전달, 이동 객체) 
 // song테이블에 대한 DTO 자료구조

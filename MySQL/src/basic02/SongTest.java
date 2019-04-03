@@ -1,4 +1,6 @@
-package basic2;
+package basic02;
+
+import java.util.List;
 
 public class SongTest {
 	public static void main(String[] args) {
@@ -10,7 +12,7 @@ public class SongTest {
 		// sDao.insertSong(sDto);
 		
 		//SongDTO sDto = sDao.selectOne(117);
-		SongDTO sDto = sDao.selectOne(118);
+		/*SongDTO sDto = sDao.selectOne(118);
 		System.out.println(sDto.toString() + "\n");
 		sDto.setTitle("넌 이즈 뭔들");
 		sDto.setLyrics("나 지금 너 땜에 혼라스러 제발 누가 나 좀 말려줘");
@@ -18,12 +20,12 @@ public class SongTest {
 		sDto = sDao.selectOne(118);
 		System.out.println(sDto.toString() + "\n");
 		
-		sDao.deleteSong(sDto);
-		sDao.close();
+		sDao.deleteSong(sDto);*/
 		
-		/*List<SongDTO> list = sDao.selectAll();
+		List<SongDTO> list = sDao.selectAll();
 		for (SongDTO song : list) {
 			System.out.println(song.toString());
-		}*/
+		}
+		sDao.close();
 	}
 }
