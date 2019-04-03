@@ -102,7 +102,6 @@ public class MemberTest {
 				run = false;
 				break;
 			} // End of switch
-			
 		} // End of while
 		
 		// Connection close
