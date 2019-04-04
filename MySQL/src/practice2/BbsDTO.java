@@ -1,16 +1,15 @@
 package practice2;
 
-import java.sql.Timestamp;
-
 public class BbsDTO {
 
 	private int id;
 	private int memberId;
 	private String title;
-	private Timestamp date;
+	private String date;
 	private String content;
+	private String name;
 	
-	public BbsDTO(int id, int memberId, String title, Timestamp date, String content) {
+	public BbsDTO(int id, int memberId, String title, String date, String content) {
 		super();
 		this.id = id;
 		this.memberId = memberId;
@@ -19,6 +18,14 @@ public class BbsDTO {
 		this.content = content;
 	}
 	
+	public BbsDTO(int memberId, String title, String date, String content) {
+		super();
+		this.memberId = memberId;
+		this.title = title;
+		this.date = date;
+		this.content = content;
+	}
+
 	public BbsDTO( ) { }
 
 	public int getId() {
@@ -45,11 +52,11 @@ public class BbsDTO {
 		this.title = title;
 	}
 
-	public Timestamp getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Timestamp date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
@@ -61,9 +68,28 @@ public class BbsDTO {
 		this.content = content;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	@Override
 	public String toString() {
-		return "BbsDTO [id=" + id + ", memberId=" + memberId + ", title=" + title + ", date=" + date + ", content="
+		return "BbsDTO [id=" + id + ", 글쓴이=" + name + ", 제목=" + title + ", 수정일=" + date.substring(0, 16) + ", 내용="
+				+ content + "]";
+	}
+	
+	// DetailSearch
+	public String toStrDetail() {
+		return "BbsDTO [글쓴이=" + name + ", 제목=" + title + ", 수정일=" + date.substring(0, 16) + ", 내용="
+				+ content + "]";
+	}
+	// Update
+	public String toStrOne() {
+		return "BbsDTO [id=" + id + ", memberId=" + memberId + ", 제목=" + title + ", 수정일=" + date.substring(0, 16) + ", 내용="
 				+ content + "]";
 	}
 }

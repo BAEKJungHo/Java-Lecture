@@ -94,15 +94,20 @@ public class MemberApplication {
 				id = Integer.parseInt(scan.nextLine());
 				System.out.print("로그인 패스워드 : ");
 				password = scan.nextLine();
-				mDao.checkLogin(id, password);
-				run = false;
+				if(mDao.checkLogin(id, password)) {
+					System.out.println("로그인 성공!");
+					run = false;
+				}
+				else {
+					System.out.println("로그인 실패!");
+					run = true;
+				}
 				break;
 			case 7:
 				System.out.println("종료되었습니다!");
 				run = false;
 				break;
 			} // End of switch
-			
 		} // End of while
 		
 		// Connection close

@@ -175,16 +175,18 @@ public class MemberDAO {
 	}
 	
 	// 로그인 검증(ID, PASSWORD)
-	public void checkLogin(int id, String password) {
+	public boolean checkLogin(int id, String password) {
 		MemberDTO member = new MemberDTO();
 		MemberDAO mDao = new MemberDAO();
 		member = mDao.selectOne(id); // 해당 id에 속하는 컬럼값 들을 member객체에 저장
 		
 		// member객체로 Getter()를 사용하여 ID와 PASSWORD값 얻어와서 비교하기
 		if((member.getId() == id) && (member.getPassword().equals(password))) {
-			System.out.println("로그인 성공!");
+			//System.out.println("로그인 성공!" + " ID : " + member.getId());
+			return true;
 		} else {
-			System.out.println("로그인 실패!");
+			//System.out.println("로그인 실패!");
+			return false;
 		}
 	}
 	// Connection Close
