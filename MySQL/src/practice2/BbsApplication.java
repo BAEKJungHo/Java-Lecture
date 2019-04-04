@@ -8,7 +8,6 @@ import java.util.Scanner;
 import practice1.MemberDAO;
 import practice1.MemberDTO;
 public class BbsApplication{
-	
 	public static void main(String[] args) {
 		boolean run = true;
 		int number;
