@@ -76,13 +76,14 @@ public class BbsDAO {
 	
 	// UPDATE QUERY - 수정 
 	public void updateBbs(BbsDTO bbs) { 
-		String query = "update bbs set title=?, content=? where memberid=?;";
+		String query = "update bbs set title=?, date=?, content=? where memberid=?;";
 		PreparedStatement pStmt = null;
 		try {
 			pStmt = conn.prepareStatement(query);
 			pStmt.setString(1, bbs.getTitle());
-			pStmt.setString(2, bbs.getContent());
-			pStmt.setInt(3, bbs.getMemberId());
+			pStmt.setString(2, bbs.getDate());
+			pStmt.setString(3, bbs.getContent());
+			pStmt.setInt(4, bbs.getMemberId());
 			
 			pStmt.executeUpdate();
 		} catch(Exception e) {

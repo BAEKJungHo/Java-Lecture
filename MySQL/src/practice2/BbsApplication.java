@@ -103,6 +103,11 @@ public class BbsApplication{
 			System.out.println("로그인 성공!");
 			member.setId(memberId);
 			
+			// 날짜 변환
+			SimpleDateFormat format1 = new SimpleDateFormat ("yy-MM-dd HH:mm");
+			Date time = new Date();
+			String time1 = format1.format(time);
+			
 			System.out.print("제목>"); title = scan.nextLine();
 			System.out.print("내용>"); content = scan.nextLine();
 			
@@ -113,6 +118,7 @@ public class BbsApplication{
 			
 			bbs.setTitle(title);
 			bbs.setContent(content);
+			bbs.setDate(time1);
 			bDao.updateBbs(bbs);
 			
 			// Update 후
