@@ -5,17 +5,17 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class PredicateExample {
-	private static List<Student> list = Arrays.asList(
-			new Student("홍길동", "남자", 90),
-			new Student("박한나", "여자", 92)
+	private static List<Student1> list = Arrays.asList(
+			new Student1("홍길동", "남자", 90),
+			new Student1("박한나", "여자", 92)
 	);
 	
-	public static double avg(Predicate<Student> predicate) {
+	public static double avg(Predicate<Student1> predicate) {
 		int count = 0, sum = 0;
-		for(Student student : list) {
-			if(predicate.test(student)) {
+		for(Student1 student1 : list) {
+			if(predicate.test(student1)) {
 				count++;
-				sum += student.getScore();
+				sum += student1.getScore();
 			}
 		}
 		return (double) sum/count;
