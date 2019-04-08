@@ -6,6 +6,5 @@ public class MemberExample {
 		Member mike = new Member("mike", "mk", "mk123", 25);
 		
 		System.out.println(john.compareTo(mike));
-
 	}
 }

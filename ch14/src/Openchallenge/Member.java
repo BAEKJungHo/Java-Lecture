@@ -47,7 +47,5 @@ public class Member implements Comparable<Member> {
       else if(this.age == o.age) return 0;
       else return -1;
     }
-	
-	
-	
+    
 }
