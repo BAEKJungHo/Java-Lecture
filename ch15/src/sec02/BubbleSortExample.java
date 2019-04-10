@@ -1,8 +1,9 @@
-package sec01;
+package sec02;
 
-import java.util.*;
+import java.util.Arrays;
 
-public class ArrayListExample {
+public class BubbleSortExample {
+
 	public static void main(String[] args) {
 		String[] array = new String[] {"김", "이", "박"};
 		//Arrays.sort(array);
