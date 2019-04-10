@@ -23,7 +23,6 @@ public class UsedCollectionExample {
 		StringTokenizer st = new StringTokenizer(name, ",");
 		int countToken = st.countTokens();
 		
-		String[] lastNames = new String[countToken];
 		String[] names = new String[countToken];
 
 		// 리스트에 문자열 넣고, treeSet에 List넣기
