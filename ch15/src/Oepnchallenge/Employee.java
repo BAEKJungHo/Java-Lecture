@@ -16,6 +16,4 @@ public class Employee {
 		this.position = position;
 		this.date = date;
 	}
-	
-	
 }
