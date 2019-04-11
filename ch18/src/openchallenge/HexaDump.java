@@ -20,6 +20,5 @@ public class HexaDump {
 		        System.out.format("%02X ", b[i]);
 		  }
 		}
-		
 	}
 }
