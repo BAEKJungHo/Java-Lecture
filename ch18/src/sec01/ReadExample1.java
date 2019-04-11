@@ -1,4 +1,4 @@
-package ch18;
+package sec01;
 
 import java.io.FileInputStream;
 import java.io.InputStream;

@@ -1,4 +1,4 @@
-package ch18;
+package sec01;
 
 import java.io.FileOutputStream;
 import java.io.OutputStream;
