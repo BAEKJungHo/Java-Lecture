@@ -18,7 +18,5 @@ public class MyCalcApp {
 		cal.multiply(a, b);
 		
 		scan.close();
-
 	}
-
 }

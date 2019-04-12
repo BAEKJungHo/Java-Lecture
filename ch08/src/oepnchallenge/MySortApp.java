@@ -16,8 +16,5 @@ public class MySortApp {
 		for(String desc : mysort.sort(array, true)) {
 			System.out.print(desc + " ");
 		}
-		
-
 	}
-
 }

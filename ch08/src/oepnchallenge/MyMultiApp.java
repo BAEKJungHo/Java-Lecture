@@ -12,7 +12,5 @@ public class MyMultiApp {
 		System.out.println(mymulti.min(array));
 		System.out.println(mymulti.sum(array));
 		System.out.println(mymulti.avg(array));
-
 	}
-
 }

@@ -31,7 +31,9 @@ public class OpenChallenge {
 				right[i][k] = Integer.parseInt(scan.nextLine());
 			}
 		}
-		merge = new int[row][col];
+		
+		merge = new int[row][col]; // merge 크기
+		
 		// Matrix Multiplication
 		for(int i=0; i<row; i++) {
 			for(int k=0; k<row; k++) {
