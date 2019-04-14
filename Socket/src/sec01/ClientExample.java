@@ -3,13 +3,14 @@ package sec01;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+
 public class ClientExample {
   public static void main(String[] args) {
     Socket socket = null;
     try {
-      socket = new Socket(); // Socket »ý¼º
+      socket = new Socket(); // Socket ï¿½ï¿½ï¿½ï¿½
       System.out.println("[Connection Request]");
-      socket.connect(new InetSocketAddress("localhost", 5003)); // ¿¬°á ¿äÃ»
+      socket.connect(new InetSocketAddress("localhost", 5003)); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã»
       // socket = new Socket("localhost", 5001);
       System.out.println("[Success Connection]");
     } catch(Exception e) {}
