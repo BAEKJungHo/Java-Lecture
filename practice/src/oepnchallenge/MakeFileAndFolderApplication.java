@@ -25,6 +25,7 @@ public class MakeFileAndFolderApplication {
 			fos.close();
 		}
 	}
+	
 	static void mkdirs() {
 		File file = new File("c:/Temp/Ex04/low/1");
 		file.mkdirs();
