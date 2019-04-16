@@ -8,7 +8,7 @@ public class ShallowCopyExample {
 		String str1 = "Java";
 		String copyStr1 = str1;
 		
-		System.out.println("-----------------------°ª È®ÀÎ----------------------");
+		System.out.println("-----------------------ê°’----------------------");
 		
 		System.out.println("Original : " + str1 + "   -----   " + "Copy : " + copyStr1);
 		
@@ -39,6 +39,8 @@ public class ShallowCopyExample {
 		list.add("Python");
 		
 		List<String> copyList = list;
+		List<String> copyList2 = new ArrayList<String>();
+		copyList2.addAll(list);
 		
 		System.out.print("Original : ");
 		for(String str : list) {
@@ -47,12 +49,20 @@ public class ShallowCopyExample {
 		
 		System.out.print("   -----   ");
 		
-		System.out.print("Copy : ");
+		System.out.print("Copy1 : ");
 		for(String str : copyList) {
 			System.out.print(str);
 		}
+		System.out.println();
+		System.out.print("   -----   ");
+		
+		System.out.print("Copy2 : ");
+		for(String str : copyList2) {
+			System.out.print(str);
+		}
+		
 		System.out.println(); System.out.println();
-		System.out.println("-----------------------¸Ş¸ğ¸® ¹øÁö È®ÀÎ----------------------");
+		System.out.println("-----------------------í•´ì‹œì½”ë“œê°’----------------------");
 		System.out.println("Str1 :" + str1.hashCode());
 		System.out.println("copyStr1 :" + copyStr1.hashCode());
 		System.out.println("Str2 :" + str2.hashCode());
@@ -61,13 +71,18 @@ public class ShallowCopyExample {
 		System.out.println("copyArray :" + copyArray.hashCode());
 		System.out.println("list :" + list.hashCode());
 		System.out.println("copyList :" + copyList.hashCode());
+		System.out.println("copyList2 :" + copyList2.hashCode());
 		
 		System.out.println();
 		
-		// º¹Á¦ÇÑ copyList¿¡ ¹®ÀÚ¿­ Ãß°¡
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ copyListï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ ï¿½ß°ï¿½
 		copyList.add("Spring");
 		System.out.println("list :" + list);
 		System.out.println("copyList :" + copyList);
+		copyList2.add("ìë°”");
+		System.out.println("list :" + list);
+		System.out.println("copyList2 :" + copyList2);
+		
 
 	}
 }
