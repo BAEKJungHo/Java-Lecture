@@ -1,4 +1,4 @@
-package practice1;
+package member;
 
 public class MemberDTO {
 	private int id;

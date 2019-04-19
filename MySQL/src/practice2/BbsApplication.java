@@ -5,8 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-import practice1.MemberDAO;
-import practice1.MemberDTO;
+import member.MemberDAO;
+import member.MemberDTO;
 public class BbsApplication{
 	public static void main(String[] args) {
 		boolean run = true;

@@ -8,8 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import practice1.MemberDAO;
-import practice1.MemberDTO;
+import member.MemberDAO;
+import member.MemberDTO;
 
 public class BbsDAO {
 	

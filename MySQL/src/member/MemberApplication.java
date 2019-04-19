@@ -1,9 +1,9 @@
-package practice1;
+package member;
 
 import java.util.List;
 import java.util.Scanner;
 
-import basic03.EaglesDTO;
+import eagles.EaglesDTO;
 public class MemberApplication {
 	public static void main(String[] args) {
 		boolean run = true;
@@ -94,12 +94,20 @@ public class MemberApplication {
 				id = Integer.parseInt(scan.nextLine());
 				System.out.print("로그인 패스워드 : ");
 				password = scan.nextLine();
-				if(mDao.checkLogin(id, password)) {
+				if(mDao.verifyIdPassword(id, password) == mDao.ID_PASSWORD_MATCH) {
 					System.out.println("로그인 성공!");
 					run = false;
 				}
+				else if(mDao.verifyIdPassword(id, password) == mDao.PASSWORD_IS_WRONG){
+					System.out.println("패스워드 틀림");
+					run = true;
+				} 
+				else if(mDao.verifyIdPassword(id, password) == mDao.ID_DOES_NOT_EXIST) {
+					System.out.println("아이디가 존재하지 않음");
+					run = true;
+				}
 				else {
-					System.out.println("로그인 실패!");
+					System.out.println("DB 오류");
 					run = true;
 				}
 				break;

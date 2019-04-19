@@ -1,4 +1,4 @@
-package practice1;
+package member;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import basic03.EaglesDTO;
+import member.BCrypt;
 
 public class MemberDAO {
 	
@@ -17,7 +17,12 @@ public class MemberDAO {
 	private static final String PASSWORD = "javapass";
 	private static final String URL = "jdbc:mysql://localhost:3306/world?verifyServerCertificate=false&useSSL=false";
 	
-
+	// 로그인 처리를 위한 상수 선언
+	public static final int ID_PASSWORD_MATCH = 1; // 아이디, 패스워드가 올바르면 1의값
+	public static final int ID_DOES_NOT_EXIST = 2; // 아이디가 존재하지 않으면 2의 값
+	public static final int PASSWORD_IS_WRONG = 3; // 패스워드가 틀리면 3의 값
+	public static final int DATABASE_ERROR = -1; // DB Error 발생 시 -1의 음수값
+	
 	// Constructor : JDBC 드라이버를 로딩 & DB Connection 구하기
 	public MemberDAO() {
 		try {
@@ -27,6 +32,70 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 	}
+
+    public void initPassword() {
+    	List<MemberDTO> mList = selectAll();
+    	for (MemberDTO member: mList) {
+    		int id = member.getId();
+    		String plainPassword = member.getPassword();
+    		String hashedPassword = BCrypt.hashpw(plainPassword, BCrypt.gensalt());
+    		updatePassword(id, hashedPassword);
+    	}
+    }
+    
+	// 로그인 처리를 위한 메소드
+	public int verifyIdPassword(int id, String password) {
+		System.out.println("verifyIdPassword(): " + id + "," + password);
+		String query = "select hashed from member where id=?;";
+		PreparedStatement pStmt = null;
+		ResultSet rs = null;
+		String hashedPassword = "";
+		try {
+			pStmt = conn.prepareStatement(query);
+			pStmt.setInt(1, id);
+			rs = pStmt.executeQuery();
+			while(rs.next()) {
+				hashedPassword = rs.getString(1);
+				if(BCrypt.checkpw(password, hashedPassword))
+					return ID_PASSWORD_MATCH;
+				else 
+					return PASSWORD_IS_WRONG;
+			}
+			return ID_DOES_NOT_EXIST;
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				if(pStmt != null && !pStmt.isClosed())
+					pStmt.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return DATABASE_ERROR;
+	}
+    
+    public void updatePassword(int id, String hashed) {
+    	String query = "update member set hashed=? where id=?;";
+    	PreparedStatement pStmt = null;
+    	try {
+			pStmt = conn.prepareStatement(query);
+			pStmt.setString(1, hashed);
+			pStmt.setInt(2, id);
+			
+			pStmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pStmt != null && !pStmt.isClosed()) 
+					pStmt.close();
+			} catch (SQLException se) {
+				se.printStackTrace();
+			}
+		}	
+    }
 	
 	// INSERT QUERY - 회원가입
 	public void insertMember(MemberDTO member) { 

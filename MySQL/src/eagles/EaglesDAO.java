@@ -1,4 +1,4 @@
-package basic03;
+package eagles;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -56,19 +56,20 @@ public class EaglesDAO {
 		}
 	}
 	
-	// UPDATE QUERY
-	public void updatePlayer(EaglesDTO player) { 
-		String query = "update eagles set name=?, position=?, highschool=?, throw_hand=?, birth=?, salary=? where no=?;";
+	// UPDATE QUERY : 트레이드할 번호를 매개변수로 추가로 줌
+	public void updatePlayer(EaglesDTO player, int tradeNo) { 
+		String query = "update eagles set no=?, name=?, position=?, highschool=?, throw_hand=?, birth=?, salary=? where no=?;";
 		PreparedStatement pStmt = null;
 		try {
 			pStmt = conn.prepareStatement(query);
-			pStmt.setString(1, player.getName());
-			pStmt.setString(2, player.getPosition());
-			pStmt.setString(3, player.getHs());
-			pStmt.setString(4, player.getHand());
-			pStmt.setInt(5, player.getBirth());
-			pStmt.setInt(6, player.getSalary());
-			pStmt.setInt(7, player.getBackNo());
+			pStmt.setInt(1, player.getBackNo());
+			pStmt.setString(2, player.getName());
+			pStmt.setString(3, player.getPosition());
+			pStmt.setString(4, player.getHs());
+			pStmt.setString(5, player.getHand());
+			pStmt.setInt(6, player.getBirth());
+			pStmt.setInt(7, player.getSalary());
+			pStmt.setInt(8, tradeNo);
 			
 			pStmt.executeUpdate();
 		} catch(Exception e) {

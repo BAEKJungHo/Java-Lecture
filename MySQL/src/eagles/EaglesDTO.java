@@ -1,4 +1,4 @@
-package basic03;
+package eagles;
 
 public class EaglesDTO {
 	

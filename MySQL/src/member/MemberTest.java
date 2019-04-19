@@ -1,9 +1,9 @@
-package practice1;
+package member;
 
 import java.util.List;
 import java.util.Scanner;
 
-import basic03.EaglesDTO;
+import eagles.EaglesDTO;
 public class MemberTest {
 	public static void main(String[] args) {
 		boolean run = true;

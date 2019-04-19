@@ -1,8 +1,7 @@
-package basic03;
+package eagles;
 
 import java.util.List;
-
-import basic02.SongDTO;
+import java.util.Scanner;
 
 public class EaglesTest {
 	public static void main(String[] args) {
