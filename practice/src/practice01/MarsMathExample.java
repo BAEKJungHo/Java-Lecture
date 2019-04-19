@@ -9,16 +9,16 @@ public class MarsMathExample {
 		System.out.print("테스트 케이스 숫자 입력 : ");
 		int testCaseNumber = Integer.parseInt(scan.nextLine());
 		
-		String[] exp = new String[testCaseNumber];
-		int[] expNum = new int[testCaseNumber];
-		String[] expStr = new String[testCaseNumber];
-		int[] result = new int[testCaseNumber];
+		String[] exp = new String[testCaseNumber]; // 수식 입력
+		double[] expNum = new double[testCaseNumber]; // 숫자 배열
+		String[] expStr = new String[testCaseNumber]; // 문자 배열
+		double[] result = new double[testCaseNumber]; // 결과 배열
 		
 		for(int i=0; i<testCaseNumber; i++) {
 			System.out.print("식을 입력하세요");
 			exp[i] = scan.nextLine();
 			StringTokenizer st = new StringTokenizer(exp[i], " ");
-			expNum[i] = Integer.parseInt(st.nextToken());
+			expNum[i] = Double.parseDouble(st.nextToken());
 			int sum = 0;
 			while(st.hasMoreTokens()) {
 				try {
@@ -46,7 +46,7 @@ public class MarsMathExample {
 			}
 		}
 		for(int i=0; i<testCaseNumber; i++) {
-			System.out.println(result[i]);
+			System.out.println(String.format("%.2f", result[i]));
 		}
 	}
 }
