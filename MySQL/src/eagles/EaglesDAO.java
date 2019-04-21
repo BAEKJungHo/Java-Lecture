@@ -17,7 +17,6 @@ public class EaglesDAO {
 	private static final String PASSWORD = "javapass";
 	private static final String URL = "jdbc:mysql://localhost:3306/world?verifyServerCertificate=false&useSSL=false";
 	
-
 	// Constructor : JDBC 드라이버를 로딩 & DB Connection 구하기
 	public EaglesDAO() {
 		try {
