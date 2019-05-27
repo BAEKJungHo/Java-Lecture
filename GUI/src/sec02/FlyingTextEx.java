@@ -43,5 +43,4 @@ public class FlyingTextEx extends JFrame {
 	public static void main(String[] args) {
 		new FlyingTextEx();
 	}
-
 }
