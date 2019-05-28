@@ -22,9 +22,6 @@ public class CheckBoxEvent extends JFrame {
 			contentPane.add(cb[i]);
 			cb[i].addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent e) {
-					int selected = 1;
-					if(e.getStateChange() == ItemEvent.SELECTED) selected = 1;
-					else selected = -1;
 					if(e.getItem() == cb[0]) {
 						if(button.isEnabled())
 							button.setEnabled(false);
